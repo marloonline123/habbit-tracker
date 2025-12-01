@@ -1,6 +1,6 @@
 # 🚀 Habbit Tracker
 
-![App Screenshot - Habits Screen](assets/images/thumpnail.png)
+![App Screenshot - Habits Screen](assets/images/thumbnail-2.png)
 
 A modern, cross-platform habit tracking application built with React Native and Expo, powered by Appwrite. This app helps users define, track, and manage their daily, weekly, or monthly habits, visualize their progress through streaks, and stay motivated.
 
