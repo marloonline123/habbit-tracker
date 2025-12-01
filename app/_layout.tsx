@@ -1,6 +1,8 @@
 import AuthContextProvider, { useAuthContext } from "@/context/AuthProvider";
 import { Stack, useRouter, useSegments } from "expo-router";
 import { useEffect } from "react";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
 
 function AuthGuard({ children }: { children: React.ReactNode }) {
   const { user, isLoadingUser } = useAuthContext();
@@ -11,14 +13,10 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
 
 
   useEffect(() => {
-    console.log('auth routes: ', segments);
-    
     if (!isLoadingUser && !user && !inAuthRoutes) {
-      console.log('first');
-      
+
       router.replace("/login");
     } else if (!isLoadingUser && user && inAuthRoutes) {
-      console.log('second');
       router.replace("/(tabs)/habits");
     }
   }, [user, isLoadingUser, inAuthRoutes, segments, router]);
@@ -28,14 +26,21 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
 
 export default function RootLayout() {
   return (
-    <AuthContextProvider>
-      <AuthGuard>
-        <Stack initialRouteName="login" screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="(tabs)" />
-          <Stack.Screen name="login" />
-          <Stack.Screen name="register" />
-        </Stack>
-      </AuthGuard>
-    </AuthContextProvider>
+    <GestureHandlerRootView>
+      <AuthContextProvider>
+        <AuthGuard>
+          <Stack
+            initialRouteName="login"
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="(tabs)" />
+            <Stack.Screen name="login" />
+            <Stack.Screen name="register" />
+          </Stack>
+        </AuthGuard>
+      </AuthContextProvider>
+    </GestureHandlerRootView>
   );
 }

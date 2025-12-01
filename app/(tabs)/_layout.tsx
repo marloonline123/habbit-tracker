@@ -7,10 +7,12 @@ export default function TabsLayout() {
   return (
     <Tabs initialRouteName='habits' screenOptions={{
       headerTitleAlign: 'center',
-      headerRight: () => <Feather 
-        onPress={logout} 
-        name='log-out' size={24} 
-        style={{ 
+      headerStyle: { backgroundColor: 'transparent', elevation: 0, shadowOpacity: 0 },
+      tabBarStyle: { backgroundColor: 'transparent', elevation: 0, shadowOpacity: 0 },
+      headerRight: () => <Feather
+        onPress={logout}
+        name='log-out' size={24}
+        style={{
           fontWeight: 'bold',
           marginRight: 20,
           backgroundColor: '#2488edff',

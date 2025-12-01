@@ -16,3 +16,9 @@ export interface Habit extends Models.Row {
     $createdAt: string;
     $updatedAt: string;
 }
+
+export interface HabitCompletion extends Models.Document {
+    habbit_id: string;
+    user_id: string;
+    completed_at: string;
+}

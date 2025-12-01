@@ -1,5 +1,5 @@
 import { useAuthContext } from '@/context/AuthProvider'
-import { DATABASE_ID, HABBITS_COLLECTION_ID, tableDb } from '@/lib/appwrite'
+import { DATABASE_ID, HABBITS_COLLECTION_ID, db } from '@/lib/appwrite'
 import { HabitForm } from '@/types/habits'
 import { useRouter } from 'expo-router'
 import React, { useEffect, useState } from 'react'
@@ -39,7 +39,7 @@ const AddHabit = () => {
             setIsLoading(true);
             setError(null);
 
-            const response = await tableDb.createRow(
+            const response = await db.createDocument(
                 DATABASE_ID,
                 HABBITS_COLLECTION_ID,
                 ID.unique(),
